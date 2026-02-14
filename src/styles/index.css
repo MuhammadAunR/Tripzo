@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root{
+     --color-primary: #FFF1DA;
+     --color-secondary: #DF6951;
+     --font-main: "Century Gothic", sans-serif;
+}
+
+html,body{
+    font-family: var(--font-main);
+}
