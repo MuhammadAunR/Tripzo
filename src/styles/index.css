@@ -4,8 +4,22 @@
      --color-primary: #FFF1DA;
      --color-secondary: #DF6951;
      --font-main: "Century Gothic", sans-serif;
+     --font-stylish: 'Impact', Charcoal, sans-serif;
 }
 
 html,body{
     font-family: var(--font-main);
+}
+.countryName{
+    font-family: var(--font-stylish);
+}
+
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 6px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: 15px;
+
 }
