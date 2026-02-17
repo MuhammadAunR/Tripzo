@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root{
-     --color-primary: #FFF1DA;
-     --color-secondary: #DF6951;
+     --color-primary: #0A4D68;
+     --color-secondary: #D4AF37;
+     --color-tertiary: #F8F6F0;
      --font-main: "Century Gothic", sans-serif;
      --font-stylish: 'Impact', Charcoal, sans-serif;
 }
 
 html,body{
     font-family: var(--font-main);
+    scroll-behavior: smooth;
 }
 .countryName{
     font-family: var(--font-stylish);

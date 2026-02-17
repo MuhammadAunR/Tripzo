@@ -1,8 +1,8 @@
 import { Eye, EyeOff } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
-import RippleButton from '../components/lightswind/ripple-button'
+import { RegisterButton } from '../components/ButtonUi';
 
 const Login = () => {
     const [passwordVisibility, setPasswordVisibility] = useState(false)
@@ -90,13 +90,7 @@ const Login = () => {
                             <p className='cursor-pointer text-blue-500'>Forgot Password</p>
                         </div>
                         <div onClick={() => handleLogin()} >
-                            <RippleButton
-                                text="Login"
-                                bgColor="#fff1da"
-                                circleColor="#df6951"
-                                width="150px"
-                                height="50px"
-                            />
+                            <RegisterButton text={'Login'} />
                         </div>
                     </div>
                 </div>
