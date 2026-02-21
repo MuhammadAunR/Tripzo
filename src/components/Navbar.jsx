@@ -20,12 +20,13 @@ const Navbar = () => {
                 </Link>
                 <ul className='flex justify-evenly items-center gap-7 max-lg:hidden'>
                     <li className='font-semibold transform transition-all duration-300 ease-linear cursor-pointer tracking-wider text-lg hover:text-(--color-secondary)'>
-                        <a href="#destinations">Destinations</a>
+                        <Link to={'/'}>Home</Link>
                     </li>
-                    <li className='font-semibold transform transition-all duration-300 ease-linear cursor-pointer tracking-wider text-lg hover:text-(--color-secondary)'>Hotels</li>
-                    <li className='font-semibold transform transition-all duration-300 ease-linear cursor-pointer tracking-wider text-lg hover:text-(--color-secondary)'>Flights</li>
                     <li className='font-semibold transform transition-all duration-300 ease-linear cursor-pointer tracking-wider text-lg hover:text-(--color-secondary)'>
-                        <a href="#bookings">Bookings</a>
+                        <Link to={'/destinations'}>Destinations</Link>
+                    </li>
+                    <li className='font-semibold transform transition-all duration-300 ease-linear cursor-pointer tracking-wider text-lg hover:text-(--color-secondary)'>
+                        <Link to={'/about'}>About</Link>
                     </li>
                     <Link to={'/login'}>
                         <NavButtons text={'Login'} />
@@ -40,15 +41,20 @@ const Navbar = () => {
             </nav>
             <ul className={`flex flex-col transition-all duration-500 ease-in-out gap-3 ${navOptions ? "max-h-96 opacity-100 p-7" : "max-h-0 opacity-0 p-0"} sticky top-19 z-50 bg-white/40 backdrop-blur-3xl `}>
                 <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-black/90'>
-                    <a onClick={() => showNavOptions()} href="#destinations">Destinations</a>
+                    <a onClick={() => showNavOptions()} href="#home">Home</a>
                 </li>
-                <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-black/90'>Hotels</li>
-                <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-black/90'>Flights</li>
-                <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-white'>
-                    <a onClick={() => showNavOptions()} href="#bookings">Bookings</a>
+                <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-black/90'>
+                    <Link onClick={() => showNavOptions()} to={'/destinations'}>Destinations</Link>
                 </li>
-                <li className='font-semibold transform transition-all cursor-pointer tracking-wider text-lg hover:text-white duration-500 ease-linear'><Link to={'/login'}>Login</Link></li>
-                <li className='font-semibold transform transition-all cursor-pointer tracking-wider text-lg hover:text-white'><Link to={'/signup'}>Signup</Link></li>
+                <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-black/90'>
+                    <Link onClick={() => showNavOptions()} to={'/about'}>About</Link>
+                </li>
+                <li className='font-semibold transform transition-all cursor-pointer tracking-wider text-lg hover:text-white duration-500 ease-linear'>
+                    <Link onClick={() => showNavOptions()} to={'/login'}>Login</Link>
+                </li>
+                <li className='font-semibold transform transition-all cursor-pointer tracking-wider text-lg hover:text-white'>
+                    <Link onClick={() => showNavOptions()} to={'/signup'}>Signup</Link>
+                </li>
             </ul>
         </>
     )
