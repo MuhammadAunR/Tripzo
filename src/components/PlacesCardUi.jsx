@@ -22,7 +22,7 @@ const PlacesCardUi = ({ place }) => {
             <Dot />
             <p>{place.packages} Packages</p>
           </div>
-          <Link to={`destinationDetails/${place.place}`}>
+          <Link to={`destinationDetails/${place.slug}`}>
             <div className='flex items-center justify-between w-full bg-white/20 p-1 hover:bg-white/30 cursor-pointer transition-colors ease-linear rounded-sm'>
               <p className='font-semibold'>Explore Now</p>
               <ChevronRight />
