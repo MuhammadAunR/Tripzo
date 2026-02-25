@@ -4,16 +4,28 @@ import musicImg from "../assets/music.png"
 import customizationImg from "../assets/customization.png"
 import HeroSectionBg from '../assets/herosectionbg.webp'
 import testimonialsImg from "../assets/code.webp"
-import { CreditCard, Dot, Heart, Map, Navigation, Plane } from 'lucide-react';
+import { ArrowUp, CreditCard, Dot, Heart, Map, Navigation, Plane } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { TextMarquee } from "../components/lightswind/sliding-logo-marquee"
 import PlacesCardUi, { Card2, ServiceCard } from "../components/PlacesCardUi";
 import { Button, NavButtons } from "../components/ButtonUi";
 import Places from "../components/PlacesDetails"
+import { useState } from "react"
 
 const places = Places;
 
 const Home = () => {
+
+    const [toTopBtn, setToTopBtn] = useState(false)
+
+    const handleScrollToTop = () => {
+        if (window.scrollY > 300) {
+            setToTopBtn(true)
+        } else {
+            setToTopBtn(false)
+        }
+    }
+    window.addEventListener('scroll', handleScrollToTop)
 
     const services = [
         {
@@ -52,6 +64,13 @@ const Home = () => {
                         <Button />
                     </Link>
                 </div>
+                {toTopBtn &&
+                    <a href="#home" className="w-fit right-5 bottom-10 fixed z-50">
+                        <button className="bg-(--color-primary) text-white font-semibold text-xl rounded-full p-3 transition-all ease-initial duration-300 hover:scale-102 hover:text-black relative before:absolute before:content-[''] before:w-full before:h-0 before:bg-white before:left-0 before:top-0 before:rounded-full hover:before:h-full before:-z-10 before:transition-all before:duration-300 before:ease-linear ring-2 ring-white hover:ring-(--color-primary) cursor-pointer">
+                        <ArrowUp />
+                            </button>
+                    </a>
+                }
             </header>
 
             {/* Section 2  */}
@@ -70,7 +89,7 @@ const Home = () => {
                 <h4 className='uppercase text-gray-500 font-semibold'>Top Selling</h4>
                 <h2 className='text-5xl font-semibold text-center max-md:text-4xl'>Top Destinations</h2>
                 <div className='flex items-center flex-wrap justify-center gap-3 mt-10'>
-                    {places.slice(7,11).map((item, index) => {
+                    {places.slice(7, 11).map((item, index) => {
                         return <PlacesCardUi key={index} place={item} />
                     })}
                 </div>
@@ -115,7 +134,7 @@ const Home = () => {
                     </div>
 
                 </div>
-                {places.slice(1,2).map((place, index) => {
+                {places.slice(1, 2).map((place, index) => {
                     return <Card2 key={index} details={place} />
                 })}
             </section>

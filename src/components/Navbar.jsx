@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <>
 
-            <nav className={`flex justify-between items-center px-20 max-lg:px-7 py-5 bg-white/40 backdrop-blur-3xl 2xl:max-w-385 2xl:mx-auto sticky top-0 z-50`}>
+            <nav className={`flex justify-between items-center px-20 max-lg:px-7 py-5 bg-white/40 backdrop-blur-3xl 2xl:max-w-385 2xl:mx-auto sticky top-0 z-50 shadow-2xl`}>
                 <Link to={'/'}>
                     <h1 className='font-bold text-3xl cursor-pointer hover:scale-110 transition-transform ease-linear'>Tripzo</h1>
                 </Link>
@@ -39,7 +39,7 @@ const Navbar = () => {
                     {navOptions ? <X /> : <Menu />}
                 </span>
             </nav>
-            <ul className={`flex flex-col transition-all duration-500 ease-in-out gap-3 ${navOptions ? "max-h-96 opacity-100 p-7" : "max-h-0 opacity-0 p-0"} sticky top-19 z-50 bg-white/40 backdrop-blur-3xl `}>
+            <ul className={`flex flex-col transition-all duration-500 ease-in-out gap-3 ${navOptions ? "max-h-96 opacity-100 p-7" : "max-h-0 opacity-0 p-0"} sticky top-19 z-50 bg-white/40 backdrop-blur-3xl lg:hidden`}>
                 <li className='font-semibold transform transition-all duration-500 ease-linear cursor-pointer tracking-wider text-lg hover:text-black/90'>
                     <a onClick={() => showNavOptions()} href="#home">Home</a>
                 </li>

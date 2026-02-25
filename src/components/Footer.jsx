@@ -15,8 +15,12 @@ const Footer = () => {
                             <h4 className="font-semibold text-lg">Company</h4>
                             <ul className="text-gray-500">
                                 <li className="cursor-pointer hover:text-black transition-colors ease-linear">About</li>
-                                <li className="cursor-pointer hover:text-black transition-colors ease-linear">Careers</li>
-                                <li className="cursor-pointer hover:text-black transition-colors ease-linear">Mobiles</li>
+                                <li className="cursor-pointer hover:text-black transition-colors ease-linear">
+                                    <Link to={'/'}>Home</Link>
+                                </li>
+                                <li className="cursor-pointer hover:text-black transition-colors ease-linear">
+                                    <Link  to={'/destinations'}>Destinations</Link>
+                                </li>
                             </ul>
                         </div>
                         <div className="flex flex-col gap-2">

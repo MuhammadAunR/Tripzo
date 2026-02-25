@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import places from '../components/PlacesDetails'
 import { MapPin } from 'lucide-react'
+import { NavButtons } from '../components/ButtonUi'
 
 const DestinationDetails = () => {
     const { placeName } = useParams()
@@ -39,17 +40,17 @@ const DestinationDetails = () => {
             </section>
 
 
-            <main className='mx-7 lg:mx-20 flex gap-7'>
+            <main className='mx-7 lg:mx-20 flex gap-7 max-lg:flex-col'>
                 {/* Tour Details / */}
-                <section className='w-10/12'>
+                <section className='lg:w-10/12'>
                     <section className='bg-white shadow-2xl p-5 rounded-xl my-7'>
                         <div className='flex flex-col gap-3'>
                             <div className='flex gap-2'>
                                 <MapPin color='gray' />
-                                <h3 className='font-semibold text-gray-500 text-lg'>{place.location}</h3>
+                                <h3 className='font-semibold text-gray-500 md:text-lg'>{place.location}</h3>
                             </div>
 
-                            <h2 className='font-bold text-4xl'>{place.place}</h2>
+                            <h2 className='font-bold text-3xl md:text-4xl'>{place.place}</h2>
                         </div>
                         <div className='bg-gray-200 h-px w-full my-2'></div>
                         <div className='flex items-center justify-start flex-wrap gap-10'>
@@ -86,12 +87,12 @@ const DestinationDetails = () => {
                     </section>
 
                     <section className='bg-white shadow-2xl p-5 rounded-xl my-7 flex flex-col gap-3'>
-                        <h2 className='text-4xl font-bold'>Overview</h2>
-                        <p className='text-lg text-gray-600 font-semibold text-justify'>{place.overview}</p>
+                        <h2 className='text-3xl md:text-4xl font-bold'>Overview</h2>
+                        <p className='md:text-lg text-gray-600 font-semibold text-justify'>{place.overview}</p>
                     </section>
 
                     <section className='bg-white shadow-2xl p-5 rounded-xl my-7'>
-                        <div className='grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 place-items-center gap-5'>
+                        <div className='grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 place-items-center gap-5'>
                             {place.details.specialFeatures.map((item, i) => {
                                 return <div key={i} className='flex flex-col gap-3 items-center justify-center w-76 h-52 rounded-xl bg-(--color-tertiary) hover:bg-(--color-primary) hover:text-white hover:-translate-y-1 transition-all ease-linear p-5'>
                                     <h3 className='text-5xl'>{item.icon}</h3>
@@ -104,7 +105,7 @@ const DestinationDetails = () => {
 
                     <section className='bg-white shadow-2xl p-5 rounded-xl my-7'>
                         <div className='flex flex-col gap-4'>
-                            <h2 className='font-bold text-4xl'>Day-by-Day Itinerary</h2>
+                            <h2 className='font-bold text-3xl md:text-4xl'>Day-by-Day Itinerary</h2>
 
                             {place.details.itinerary.map((item, i) => (
                                 <div
@@ -115,8 +116,8 @@ const DestinationDetails = () => {
                                     </div>
 
                                     <div>
-                                        <h3 className='font-semibold text-2xl w-fit'>{item.title}</h3>
-                                        <p className='text-lg text-gray-500'>{item.desc}</p>
+                                        <h3 className='font-semibold text-xl md:text-2xl w-fit'>{item.title}</h3>
+                                        <p className='md:text-lg text-gray-500'>{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -124,13 +125,53 @@ const DestinationDetails = () => {
                     </section>
                 </section>
 
-                <aside className='bg-white shadow-2xl rounded-xl my-7 w-[100%-83.333333%] px-10 py-3'>
-                    <div className='flex items-end gap-2'>
-                    <h3 className='font-bold text-4xl text-(--color-primary)'>$1,299</h3>
-                    <h4 className='font-semibold text-lg line-through text-gray-500'>$1,699</h4>
+                <aside className='bg-white shadow-2xl rounded-xl my-7 h-fit w-full lg:w-96 px-7 py-5 sticky top-40'>
+                    <div className='flex flex-col gap-2 items-center justify-center'>
+                        <div className='flex items-end gap-2'>
+                            <h3 className='font-bold text-5xl text-(--color-primary)'>$1,299</h3>
+                            <h4 className='font-semibold text-lg line-through text-gray-500'>$1,699</h4>
+                        </div>
+                        <p className='text-gray-500'>per person</p>
+                        <p className='bg-green-300 px-4 font-semibold py-1 rounded-full w-fit '>Save 24% - Limited Offer</p>
                     </div>
-                    <p className='text-gray-500'>per person</p>
-                    <p className=''>Save 24% - Limited Offer</p>
+
+                    <div className='h-px bg-gray-200 w-full my-5'></div>
+
+                    <div className='flex flex-col gap-5'>
+                        <label htmlFor="checkInDate" className='flex flex-col gap-1'>
+                            <span className='font-semibold'>📅 Check-in-Date</span>
+                            <input type="date" name="date" id="checkInDate" className='outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2' />
+                        </label>
+                        <label htmlFor="NoOfTravelers" className='flex flex-col gap-1'>
+                            <span className='font-semibold'>👥 Number of Travelers</span>
+                            <select name="travelers" id="NoOfTravelers" className='outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2'>
+                                <option value="1 person">1 Person</option>
+                                <option value="2 people">2 People</option>
+                                <option value="3 people">3 People</option>
+                                <option value="4 people">4 People</option>
+                                <option value="5+ people">5+ People</option>
+                            </select>
+                        </label>
+                        <label htmlFor="accommodationType" className="flex flex-col gap-1">
+                            <span className="font-semibold">🏨 Accommodation Type</span>
+                            <select
+                                id="accommodationType"
+                                name="accommodationType"
+                                className="outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2">
+                                <option value="budget">Budget</option>
+                                <option value="standard">Standard</option>
+                                <option value="deluxe">Deluxe</option>
+                                <option value="luxury">Luxury</option>
+                                <option value="first-class">First Class</option>
+                                <option value="premium">Premium Resort</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div className='flex items-center justify-center my-7'>
+                        <button className="bg-(--color-primary) text-white font-semibold text-xl rounded-xl px-7 py-2 transition-all ease-initial duration-300 hover:scale-102 hover:-translate-y-0.5 hover:text-black relative before:absolute before:content-[''] before:w-full before:h-0 before:bg-white before:left-0 before:top-0 before:rounded-xl hover:before:h-full before:-z-10 before:transition-all before:duration-300 before:ease-linear ring-2 ring-transparent hover:ring-(--color-primary) cursor-pointer">
+                            Book Now</button>
+                    </div>
+                    <div className='h-px bg-gray-200 w-full my-5'></div>
                 </aside>
             </main>
         </>

@@ -2,32 +2,32 @@ import { ListFilterPlus } from 'lucide-react';
 import styled from 'styled-components';
 
 const FilterDropDown = () => {
-    return (
-        <StyledWrapper>
-            <div className="menu">
-                <div className="item">
-                    <a href="" className="link">
-                        <span className='font-bold text-xl'> Filters </span>
-                        <ListFilterPlus size={52} />
-                    </a>
-                    <div className="submenu font-semibold bg-white/10 backdrop-blur-3xl">
-                        <div className="submenu-item">
-                            <span className="submenu-link"> Popular </span>
-                        </div>
-                        <div className="submenu-item">
-                            <span className="submenu-link"> Low to High </span>
-                        </div>
-                        <div className="submenu-item">
-                            <span className="submenu-link"> High to Low </span>
-                        </div>
-                        <div className="submenu-item">
-                            <span className="submenu-link"> New </span>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <StyledWrapper>
+      <div className="menu">
+        <div className="item">
+          <a href="" className="link">
+            <span className='font-bold text-xl'> Filters </span>
+            <ListFilterPlus size={52} />
+          </a>
+          <div className="submenu font-semibold bg-white/10 backdrop-blur-3xl">
+            <div className="submenu-item">
+              <span className="submenu-link"> Popular </span>
             </div>
-        </StyledWrapper>
-    );
+            <div className="submenu-item">
+              <span className="submenu-link"> Low to High </span>
+            </div>
+            <div className="submenu-item">
+              <span className="submenu-link"> High to Low </span>
+            </div>
+            <div className="submenu-item">
+              <span className="submenu-link"> New </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </StyledWrapper>
+  );
 }
 
 const StyledWrapper = styled.div`
@@ -171,3 +171,4 @@ const StyledWrapper = styled.div`
   }`;
 
 export default FilterDropDown;
+

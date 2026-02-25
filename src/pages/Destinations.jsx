@@ -43,7 +43,7 @@ const Destinations = () => {
 
     return (
         <>
-            <section className='w-full h-76'>
+            <section id='destinations' className='w-full h-76'>
                 <img src={heroSectionImg} alt="Hero Section Image" className='inset-0 object-cover object-center h-full w-full' />
             </section>
 
