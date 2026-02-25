@@ -1,17 +1,46 @@
 import { useParams } from 'react-router-dom'
 import places from '../components/PlacesDetails'
 import { MapPin } from 'lucide-react'
-import { NavButtons } from '../components/ButtonUi'
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 const DestinationDetails = () => {
+    const [formData, setFormData] = useState({
+        checkInDate: "",
+        travelers: "1 people",
+        accommodationType: "budget",
+    })
+
     const { placeName } = useParams()
     const place = places.find(place => {
         return (place.slug === placeName.toLowerCase())
     })
+
+    const handleFormData = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev, [name]: value
+        }))
+    }
+
+    const handleFormSubmit = () => {
+        if (formData.checkInDate) {
+            setFormData(
+                {
+                    checkInDate: "",
+                    travelers: "1 people",
+                    accommodationType: "budget",
+                }
+            )
+            toast.success('Booking Successful')
+        } else {
+            toast.error('Input fields required!')
+        }
+    }
+
     return (
         <>
-
-
+            <Toaster />
             {/* Photo Gallery  */}
             <section className='px-7 lg:px-20'>
                 <div className="flex items-center justify-center max-lg:flex-col gap-2 w-fit mx-auto rounded-xl overflow-hidden">
@@ -38,7 +67,6 @@ const DestinationDetails = () => {
                     </div>
                 </div>
             </section>
-
 
             <main className='mx-7 lg:mx-20 flex gap-7 max-lg:flex-col'>
                 {/* Tour Details / */}
@@ -140,11 +168,22 @@ const DestinationDetails = () => {
                     <div className='flex flex-col gap-5'>
                         <label htmlFor="checkInDate" className='flex flex-col gap-1'>
                             <span className='font-semibold'>📅 Check-in-Date</span>
-                            <input type="date" name="date" id="checkInDate" className='outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2' />
+                            <input
+                                type="date"
+                                name="checkInDate"
+                                value={formData.checkInDate}
+                                onChange={handleFormData}
+                                id="checkInDate"
+                                className='outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2' />
                         </label>
                         <label htmlFor="NoOfTravelers" className='flex flex-col gap-1'>
                             <span className='font-semibold'>👥 Number of Travelers</span>
-                            <select name="travelers" id="NoOfTravelers" className='outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2'>
+                            <select
+                                name="travelers"
+                                id="NoOfTravelers"
+                                value={formData.travelers}
+                                onChange={handleFormData}
+                                className='outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2'>
                                 <option value="1 person">1 Person</option>
                                 <option value="2 people">2 People</option>
                                 <option value="3 people">3 People</option>
@@ -157,6 +196,8 @@ const DestinationDetails = () => {
                             <select
                                 id="accommodationType"
                                 name="accommodationType"
+                                value={formData.accommodationType}
+                                onChange={handleFormData}
                                 className="outline-2 outline-gray-300 hover:outline-(--color-primary) transition-colors ease-initial rounded-sm p-2">
                                 <option value="budget">Budget</option>
                                 <option value="standard">Standard</option>
@@ -168,7 +209,7 @@ const DestinationDetails = () => {
                         </label>
                     </div>
                     <div className='flex items-center justify-center my-7'>
-                        <button className="bg-(--color-primary) text-white font-semibold text-xl rounded-xl px-7 py-2 transition-all ease-initial duration-300 hover:scale-102 hover:-translate-y-0.5 hover:text-black relative before:absolute before:content-[''] before:w-full before:h-0 before:bg-white before:left-0 before:top-0 before:rounded-xl hover:before:h-full before:-z-10 before:transition-all before:duration-300 before:ease-linear ring-2 ring-transparent hover:ring-(--color-primary) cursor-pointer">
+                        <button onClick={handleFormSubmit} className="bg-(--color-primary) text-white font-semibold text-xl rounded-xl px-7 py-2 transition-all ease-initial duration-300 hover:scale-102 hover:-translate-y-0.5 hover:text-black relative before:absolute before:content-[''] before:w-full before:h-0 before:bg-white before:left-0 before:top-0 before:rounded-xl hover:before:h-full before:-z-10 before:transition-all before:duration-300 before:ease-linear ring-2 ring-transparent hover:ring-(--color-primary) cursor-pointer">
                             Book Now</button>
                     </div>
                     <div className='h-px bg-gray-200 w-full my-5'></div>

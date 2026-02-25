@@ -5,6 +5,7 @@ import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import Destinations from '../pages/Destinations'
 import DestinationDetails from '../pages/DestinationDetails'
+import About from '../pages/About'
 
 const AppRouter = () => {
     return (
@@ -15,7 +16,7 @@ const AppRouter = () => {
                         <Route path='/' element={<Home />} />
                         <Route path='/destinationDetails/:placeName' element={<DestinationDetails />} />
                         <Route path='/destinations' element={<Destinations />} />
-                        
+                        <Route path='/about' element={<About />} />
                     </Route>
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<Signup />} />
